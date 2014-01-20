@@ -10,13 +10,13 @@
 
 @implementation RITEnumTest
 
-- (NSString*) NSStringWithRITGender: (RITGender) gender {
+- (NSString*) stringWithRITGender: (RITGender) gender {
     return (gender == RITGenderMale) ? @"Male":@"Female";
 }
 
-- (NSString*) NSStringWithRITColor: (RITColor) color {
+- (NSString*) stringWithRITColor: (RITColor) color {
     
-    NSString* result;
+    NSString* result = nil;
     
     if (color == RITColorBlue) {
         result =  @"Blue";
