@@ -10,4 +10,23 @@
 
 @implementation RITEnumTest
 
+- (NSString*) NSStringWithRITGender: (RITGender) gender {
+    return (gender == RITGenderMale) ? @"Male":@"Female";
+}
+
+- (NSString*) NSStringWithRITColor: (RITColor) color {
+    
+    NSString* result;
+    
+    if (color == RITColorBlue) {
+        result =  @"Blue";
+    } else if (color == RITColorGreen) {
+        result =  @"Green";
+    } else if (color == RITColorRed) {
+        result = @"Red";
+    };
+    
+    return result;
+}
+    
 @end

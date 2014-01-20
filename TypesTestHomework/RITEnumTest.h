@@ -8,6 +8,27 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum {
+    RITGenderMale,
+    RITGenderFemale
+} RITGender;
+
+typedef enum {
+    RITColorRed,
+    RITColorGreen,
+    RITColorBlue
+} RITColor;
+
+typedef enum {
+    RITHairColorLight = 4,
+    RITHairColorBrown,
+    RITHairColorRed
+} RITHairColor;
+
 @interface RITEnumTest : NSObject
+
+@property (assign, nonatomic) RITGender gender;
+@property (assign, nonatomic) RITColor color;
+@property (assign, nonatomic) RITHairColor hairColor;
 
 @end

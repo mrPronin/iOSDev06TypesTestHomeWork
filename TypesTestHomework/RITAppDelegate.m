@@ -7,6 +7,7 @@
 //
 
 #import "RITAppDelegate.h"
+#import "RITEnumTest.h"
 
 @implementation RITAppDelegate
 
@@ -16,6 +17,67 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    
+    NSLog(@"***01***");
+    NSLog(@"------------------------------------------------------------");
+    
+    RITEnumTest*    obj1 = [[RITEnumTest alloc] init];
+    obj1.gender     = RITGenderMale;
+    obj1.color      = RITColorGreen;
+    obj1.hairColor = RITHairColorRed;
+    
+    NSLog(@"***02***");
+    NSLog(@"------------------------------------------------------------");
+    
+    NSInteger   randPointCount  = 50;
+    NSInteger   fieldWidth      = 10;
+    NSInteger   fieldHeight     = 10;
+    NSInteger   hitCount        = 0;
+    CGRect      targetRect      = CGRectMake(3, 3, 4, 4);
+    
+    NSMutableArray* points = [[NSMutableArray alloc] init];
+    
+    for (int i = 1; i<=randPointCount; i++) {
+        CGPoint point = CGPointMake(arc4random() % (fieldWidth + 1), arc4random() % (fieldHeight + 1));
+        [points addObject:[NSValue valueWithCGPoint:point]];
+    }
+    
+    for (NSValue* value in points) {
+        CGPoint point = [value CGPointValue];
+        BOOL shotResult = CGRectContainsPoint(targetRect, point);
+        if (shotResult) {
+            hitCount++;
+            NSLog(@"hit = %@", NSStringFromCGPoint(point));
+        }
+        
+    }
+    if (hitCount > 0) {
+        NSLog(@"Congrats! You hit %d times!", hitCount);
+    }
+    
+    NSLog(@"***03***");
+    NSLog(@"------------------------------------------------------------");
+    
+    NSMutableArray* numbers = [[NSMutableArray alloc] init];
+    for (int i=0; i<3; i++) {
+        [numbers addObject:[NSNumber numberWithFloat:(CGFloat)arc4random()]];
+    }
+    
+    for (int i=0; i<3; i++) {
+        [numbers addObject:[NSNumber numberWithBool:arc4random() % 2]];
+    }
+    
+    for (int i=0; i<3; i++) {
+        [numbers addObject:[NSNumber numberWithInteger:arc4random()]];
+    }
+    
+    NSInteger index = 0;
+    for (NSNumber* number in numbers) {
+        NSLog(@"number = %@", [[numbers objectAtIndex:index] stringValue]);
+        index++;
+    }
+    
     return YES;
 }
 
